@@ -67,7 +67,7 @@ export type Hours = {
 
 export const about = {
   kicker: "The true cost",
-  title: "We are passionate about providing you with the  widest range of organic & whole foods.",
+  title: "The widest range of organic and whole foods.",
   body: "It costs a little more to choose what is better for the planet, for animal welfare and for health. That is the ethos: say no to the industrial food system, and wherever possible partner with local suppliers of organic, biodynamic, non-GMO, free-range, seasonal produce.",
   image: "/assets/artichoke.png" as string | null,
   imageFile: "public/assets/artichoke.png",
@@ -101,19 +101,6 @@ export const stories: Story[] = [
     alt: "The shopfront at 5 Druid Ave, Stirling",
   },
   {
-    id: "cafe",
-    index: "02",
-    kicker: "At the table",
-    title: "Enjoy our café",
-    copy: "The café is a food lover’s delight. Healthy food with flavour — some organic, some conventional — and a vegetarian focus that still leaves room for vegan, dairy free, gluten free and sugar free dishes.",
-    tags: ["Vegetarian focus", "Vegan", "Gluten free", "Sugar free"],
-    action: "See opening hours",
-    href: "#find",
-    image: "/assets/cf3.jpg",
-    imageFile: "public/assets/cf3.jpg",
-    alt: "A bowl from the café",
-  },
-  {
     id: "shop",
     index: "03",
     kicker: "From anywhere",
@@ -122,10 +109,24 @@ export const stories: Story[] = [
     tags: ["Fresh", "Bulk", "Packaged"],
     action: "Shop Online",
     href: "#shop",
-    image: "/assets/660f6cbe607c46603ec10f5c.png",
-    imageFile: "public/assets/660f6cbe607c46603ec10f5c.png",
+    image: "/assets/car.png",
+    imageFile: "public/assets/car.png",
     alt: "The Organic Market delivery van",
   },
+  {
+    id: "cafe",
+    index: "02",
+    kicker: "At the table",
+    title: "Enjoy our café",
+    copy: "The café is a food lover’s delight. Healthy food with flavour — some organic, some conventional — and a vegetarian focus that still leaves room for vegan, dairy free, gluten free and sugar free dishes.",
+    tags: ["Vegetarian focus", "Vegan", "Gluten free", "Sugar free"],
+    action: "See opening hours",
+    href: "#find",
+    image: "/assets/cf2.jpg",
+    imageFile: "public/assets/cf3.jpg",
+    alt: "A bowl from the café",
+  },
+ 
 ];
 
 export const hours: Hours[] = [
@@ -163,14 +164,21 @@ export const nav = [
   { href: "#find", label: "Find us" },
 ];
 
+export const connect = {
+  feedback: "mailto:organics@ozemail.com.au",
+  subscribe: "https://organicmarket.myfoodlink.com/account/mailing_list",
+  facebook: "https://www.facebook.com/organicmarketandcafe",
+  instagram: "https://www.instagram.com/theorganicmarketandcafe/",
+};
+
 export const contact = {
   name: "The Organic Market and Café",
   address: ["5 Druid Ave", "Stirling SA 5152"],
   email: "hello@organicmarket.com.au",
   phone: "(08) 8339 4835",
   phoneHref: "tel:+61883394835",
-  mapImage: "/assets/f66319a86a1bff64316783e2169e4135.jpeg" as string | null,
-  mapImageFile: "public/assets/f66319a86a1bff64316783e2169e4135.jpeg",
+  mapImage: "/assets/store.png" as string | null,
+  mapImageFile: "public/assets/store.png",
 };
 
 export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(

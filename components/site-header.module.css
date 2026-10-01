@@ -226,6 +226,8 @@
   font-family: var(--font-riking), sans-serif;
   font-size: clamp(2.35rem, 8vw, 3rem);
   line-height: 1.12;
+  font-weight: 400;
+  font-synthesis: none;
   letter-spacing: 0.01em;
   text-decoration: none;
 }

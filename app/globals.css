@@ -84,18 +84,22 @@ section[id] {
 }
 
 .btn-rust {
-  background: var(--rust) var(--linen-rust) center / cover;
+  /* background: var(--rust) var(--linen-rust) center / cover; */
+  background: var(--rust);
   color: var(--cream);
-  font-family: var(--font-ui), sans-serif;
-  font-weight: 600;
-  font-size: 0.98rem;
+  /* font-family: var(--font-ui), sans-serif; */
+  font-family: var(--font-riking), sans-serif;
+
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .btn-wheat {
   background: var(--wheat);
   color: var(--rust);
-  font-family: var(--font-news), serif;
-  font-style: italic;
+  /* font-family: var(--font-ui), sans-serif; */
+  font-family: var(--font-riking), sans-serif;
+
   font-size: 1.15rem;
   font-weight: 500;
 }

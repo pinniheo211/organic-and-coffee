@@ -2,37 +2,11 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { hours, type Story } from "@/lib/site";
+import { contact, hours, type Story } from "@/lib/site";
 import styles from "./cafe-showcase.module.css";
 import { PhotoSlot } from "./photo-slot";
-
-const drinks = [
-  {
-    src: "/assets/cf1.jpg",
-    file: "public/assets/cf1.jpg",
-    name: "Latte",
-    alt: "Latte with a heart poured into the foam",
-  },
-  {
-    src: "/assets/cf2.jpg",
-    file: "public/assets/cf2.jpg",
-    name: "Long black",
-    alt: "A long black in a white cup",
-  },
-  {
-    src: "/assets/cf3.jpg",
-    file: "public/assets/cf3.jpg",
-    name: "Mocha",
-    alt: "A mocha dusted with cocoa",
-  },
-  {
-    src: "/assets/cf4.jpg",
-    file: "public/assets/cf4.jpg",
-    name: "Espresso",
-    alt: "Espresso in a glass with cream on the side",
-  },
-] as const;
 
 const cafeHours = hours.map((slot) => ({
   id: slot.id,
@@ -54,60 +28,24 @@ export function CafeShowcase({ story }: { story: Story }) {
     const ctx = gsap.context(() => {
       const trigger = { trigger: section, start: "top 78%", once: true } as const;
 
-      gsap.from("[data-copy]", {
-        y: 36,
-        autoAlpha: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        immediateRender: true,
-        scrollTrigger: trigger,
-      });
-
       gsap.fromTo(
-        "[data-hero-zoom]",
-        { scale: 1.18 },
+        "[data-zoom]",
+        { scale: 1.08 },
         {
           scale: 1,
-          duration: 1.45,
-          ease: "power3.out",
+          duration: 1.4,
+          ease: "power2.out",
           immediateRender: true,
           scrollTrigger: trigger,
         },
       );
 
-      gsap.utils.toArray<HTMLElement>("[data-tile]").forEach((tile, i) => {
-        gsap.from(tile, {
-          y: 48,
-          autoAlpha: 0,
-          duration: 0.95,
-          delay: 0.12 + i * 0.1,
-          ease: "power3.out",
-          immediateRender: true,
-          scrollTrigger: trigger,
-        });
-        const zoom = tile.querySelector("[data-zoom]");
-        if (zoom) {
-          gsap.fromTo(
-            zoom,
-            { scale: 1.14 },
-            {
-              scale: 1,
-              duration: 1.3,
-              delay: 0.12 + i * 0.1,
-              ease: "power3.out",
-              immediateRender: true,
-              scrollTrigger: trigger,
-            },
-          );
-        }
-      });
-
-      gsap.from("[data-board]", {
-        y: 28,
+      gsap.from("[data-panel]", {
+        y: 24,
         autoAlpha: 0,
-        duration: 0.8,
-        delay: 0.2,
-        ease: "power3.out",
+        duration: 0.85,
+        delay: 0.12,
+        ease: "power2.out",
         immediateRender: true,
         scrollTrigger: trigger,
       });
@@ -116,64 +54,69 @@ export function CafeShowcase({ story }: { story: Story }) {
     return () => ctx.revert();
   }, []);
 
-  const [hero, ...counter] = drinks;
-
   return (
-    <section id={story.id} ref={rootRef} className={styles.cafe}>
-      <div className={styles.intro}>
-        <div data-copy className={styles.copy}>
-          <p className={styles.kicker}>{story.kicker}</p>
-          <h2 className={styles.title}>{story.title}</h2>
-          <p className={styles.body}>{story.copy}</p>
-          <p className={styles.body}>
-            The counter pours coffee through the day, and the kitchen keeps the vegetarian menu going until close.
-          </p>
-          <a className="btn btn-wheat" href={story.href}>
-            {story.action}
-          </a>
+    <section id={story.id} ref={rootRef} className={styles.split}>
+      <figure className={styles.photo}>
+        <div data-zoom className={styles.zoom}>
+          <PhotoSlot
+            src={story.image}
+            alt={story.alt}
+            hint={story.imageFile}
+            tone="frame"
+            sizes="(max-width: 800px) 100vw, 58vw"
+          />
         </div>
+      </figure>
 
-        <figure className={styles.hero}>
-          <div className={styles.heroShot}>
-            <div data-hero-zoom className={styles.zoom}>
-              <PhotoSlot src={hero.src} alt={hero.alt} hint={hero.file} tone="frame" sizes="(max-width: 800px) 86vw, 34vw" />
-            </div>
+      <div data-panel className={styles.panel}>
+        {/* <Image
+          className={styles.bloom}
+          src="/assets/background-bottom.png"
+          alt=""
+          width={1254}
+          height={1254}
+          aria-hidden
+        /> */}
+        <h2 className={styles.title}>{story.title}</h2>
+
+        <p className={styles.lead}>
+          Our seasonal menu includes daily specials and plenty of options to satisfy specific dietary preferences.
+        </p>
+        <p className={styles.lead}>
+          Nestled in a region of outstanding artisan food production, the Organic Market and Café (OM for short) is a
+          true mecca for organic and Adelaide Hills produce. You will find us in the heart of Stirling, gateway to the
+          Adelaide Hills.
+        </p>
+
+        <div className="flex gap-20 items-start">
+          
+          <div className={styles.block}>
+            <p className={styles.label}>Opening hours</p>
+            <ul className={styles.hours}>
+              {cafeHours.map((slot) => (
+                <li key={slot.id}>
+                  <p className={styles.day}>{slot.label}</p>
+                  <p className={styles.time}>
+                    {slot.when}
+                    {slot.note ? <span>Kitchen {slot.note}</span> : null}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <figcaption className={styles.heroName}>{hero.name}</figcaption>
-        </figure>
-      </div>
-
-      <div className={styles.counter}>
-        {counter.map((drink) => (
-          <figure key={drink.src} data-tile className={styles.tile}>
-            <div className={styles.tileShot}>
-              <div data-zoom className={styles.zoom}>
-                <PhotoSlot src={drink.src} alt={drink.alt} hint={drink.file} tone="frame" sizes="(max-width: 800px) 100vw, 30vw" />
-              </div>
-            </div>
-            <figcaption className={styles.tileName}>{drink.name}</figcaption>
-          </figure>
-        ))}
-      </div>
-
-      <div data-board className={styles.board}>
-        <div>
-          <p className={styles.boardLabel}>From the kitchen</p>
-          <ul className={styles.menu}>
-            {story.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
+          <div className={styles.block}>
+            <p className={styles.label}>Stirling</p>
+            <p className={styles.place}>
+              {contact.address[0]}
+              <br />
+              {contact.address[1]}
+            </p>
+          </div>
         </div>
-        <ul className={styles.hours}>
-          {cafeHours.map((slot) => (
-            <li key={slot.id}>
-              <p className={styles.hourLabel}>{slot.label}</p>
-              <p className={styles.hourWhen}>{slot.when}</p>
-              {slot.note ? <p className={styles.hourNote}>Kitchen {slot.note}</p> : null}
-            </li>
-          ))}
-        </ul>
+
+        <a className={`btn btn-wheat ${styles.visit}`} href={story.href}>
+          View Menu
+        </a>
       </div>
     </section>
   );

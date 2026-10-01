@@ -1,9 +1,9 @@
-import { about, contact, ethos, hours, mapsHref, marquee, nav, stories } from "@/lib/site";
+import { about, connect, contact, ethos, hours, mapsHref, marquee, nav, stories } from "@/lib/site";
 import { CafeShowcase } from "./cafe-showcase";
 import { MarketShowcase } from "./market-showcase";
 import { Marquee } from "./marquee";
 import { PhotoSlot } from "./photo-slot";
-import { Parallax, Reveal } from "./scroll-fx";
+import { DriveIn, Parallax, Reveal } from "./scroll-fx";
 import styles from "./home-base.module.css";
 
 export function HomeBase() {
@@ -27,14 +27,14 @@ export function HomeBase() {
           </Reveal>
 
           <Reveal className={styles.cutout} delay={0.1}>
-            <Parallax className={styles.cutoutInner}>
+            <Parallax className={`${styles.cutoutInner} `}>
               <PhotoSlot
                 src={about.image}
                 alt={about.alt}
                 hint={about.imageFile}
                 tone="well"
                 fit="contain"
-                sizes="(max-width: 1024px) 90vw, 620px"
+                sizes="(max-width: 1023px) 72vw, 448px"
               />
             </Parallax>
           </Reveal>
@@ -62,16 +62,29 @@ export function HomeBase() {
           <section key={story.id} id={story.id} className={styles.story}>
             <div className={`${styles.shell} ${styles.split} ${flipped ? styles.flip : ""}`}>
               <Reveal className={cutout ? styles.cutout : styles.frame}>
-                <Parallax className={cutout ? styles.cutoutInner : styles.photo}>
-                  <PhotoSlot
-                    src={story.image}
-                    alt={story.alt}
-                    hint={story.imageFile}
-                    tone={cutout ? "well" : "frame"}
-                    fit={cutout ? "contain" : "cover"}
-                    sizes="(max-width: 1024px) 90vw, 720px"
-                  />
-                </Parallax>
+                {cutout ? (
+                  <DriveIn className={styles.cutoutInner}>
+                    <PhotoSlot
+                      src={story.image}
+                      alt={story.alt}
+                      hint={story.imageFile}
+                      tone="well"
+                      fit="contain"
+                      sizes="(max-width: 1024px) 90vw, 720px"
+                    />
+                  </DriveIn>
+                ) : (
+                  <Parallax className={styles.photo}>
+                    <PhotoSlot
+                      src={story.image}
+                      alt={story.alt}
+                      hint={story.imageFile}
+                      tone="frame"
+                      fit="cover"
+                      sizes="(max-width: 1024px) 90vw, 720px"
+                    />
+                  </Parallax>
+                )}
               </Reveal>
 
               <Reveal select="[data-step]">
@@ -164,6 +177,31 @@ export function HomeBase() {
       </section>
 
       <footer className={styles.footer}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={styles.footerBloom}
+          src="/assets/background-bottom.png"
+          alt=""
+          width={1254}
+          height={1243}
+        />
+        <div className={`${styles.shell} ${styles.footerConnect}`}>
+          <a href={connect.feedback}>Feedback</a>
+          <a href={connect.subscribe} target="_blank" rel="noreferrer">
+            Subscribe
+          </a>
+          <a href={connect.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.2 8.5V6.8c0-.7.5-1 1.1-1H17V3h-2.1C12.4 3 11 4.5 11 6.7v1.8H9v2.7h2V21h2.8v-9.8h2.3l.4-2.7h-2.7z" />
+            </svg>
+          </a>
+          <a href={connect.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm8 1.8H8A3.2 3.2 0 0 0 4.8 8v8A3.2 3.2 0 0 0 8 19.2h8A3.2 3.2 0 0 0 19.2 16V8A3.2 3.2 0 0 0 16 4.8zM12 8.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.6A2.2 2.2 0 1 0 14.2 12 2.2 2.2 0 0 0 12 9.8zM17.4 7.1a.9.9 0 1 1-.9-.9.9.9 0 0 1 .9.9z" />
+            </svg>
+          </a>
+        </div>
+
         <div className={`${styles.shell} ${styles.footerGrid}`}>
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -178,7 +216,7 @@ export function HomeBase() {
           </div>
 
           <div>
-            <p className={styles.footerHead}>On this page</p>
+            <p className={styles.footerHead}>Explore</p>
             <ul className={styles.footerList}>
               {nav.map((item) => (
                 <li key={item.href}>

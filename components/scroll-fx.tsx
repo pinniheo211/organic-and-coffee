@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 
 /**
  * Display faces swap in after hydration, which moves every trigger point, so the
@@ -104,6 +104,40 @@ export function Parallax({
 
     return () => ctx.revert();
   }, [distance]);
+
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
+}
+
+/** The van faces right, so it drives in from the left once the section arrives. */
+export function DriveIn({ children, className }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    setup();
+    const img = root.querySelector("img");
+    if (!img || isStill()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        img,
+        { xPercent: -115 },
+        {
+          xPercent: 0,
+          duration: 1.7,
+          ease: "power2.out",
+          scrollTrigger: { trigger: root, start: "top 78%", once: true },
+        },
+      );
+    }, root);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div ref={ref} className={className}>

@@ -112,7 +112,7 @@ export function SiteHeader() {
           <img
             src="/brand/logo.svg"
             alt=""
-            width={536}
+            width={900}
             height={59}
             className={styles.drawerLogo}
           />

@@ -1,76 +1,15 @@
-.cafe {
-  position: relative;
-  overflow: hidden;
-  background: var(--rust);
-  color: var(--cream);
-}
-
-.intro {
+.split {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: center;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 1fr;
+  background: var(--cream);
 }
 
-.copy {
-  max-width: 38rem;
-}
-
-.kicker {
-  margin: 0 0 0.55rem;
-  color: var(--wheat);
-  font-family: var(--font-news), serif;
-  font-size: 1.35rem;
-  font-style: italic;
-}
-
-.title {
-  margin: 0;
-  color: var(--cream);
-  font-family: var(--font-riking), sans-serif;
-  font-size: clamp(3.2rem, 6.4vw, 5.6rem);
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-}
-
-.body {
-  max-width: 42ch;
-  margin: 1rem 0 0;
-  color: rgba(247, 240, 230, 0.88);
-  font-size: 1.08rem;
-  line-height: 1.6;
-}
-
-.copy .btn {
-  margin-top: 1.5rem;
-}
-
-.hero {
+.photo {
   position: relative;
-  width: min(100%, 28rem);
+  min-height: 18rem;
   margin: 0;
-  justify-self: center;
-}
-
-.heroShot {
-  position: relative;
-  aspect-ratio: 1;
   overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 0 28px 50px rgba(20, 8, 4, 0.35);
-}
-
-.heroShot::after {
-  content: "";
-  position: absolute;
-  inset: 0.7rem;
-  z-index: 2;
-  border: 1px solid rgba(247, 240, 230, 0.45);
-  border-radius: 50%;
-  pointer-events: none;
+  background: #c4b4a4;
 }
 
 .zoom {
@@ -78,171 +17,142 @@
   inset: 0;
 }
 
-.heroName {
-  position: absolute;
-  z-index: 3;
-  right: 8%;
-  bottom: 10%;
-  margin: 0;
-  color: var(--cream);
-  font-family: var(--font-riking), sans-serif;
-  font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 0.9;
-  text-shadow: 0 10px 22px rgba(20, 8, 4, 0.45);
-}
-
-.counter {
-  display: grid;
-  grid-template-columns: 1.15fr 0.9fr 1fr;
-  gap: 0.7rem;
-  align-items: end;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 4.5rem) clamp(1.75rem, 4vw, 2.75rem);
-}
-
-.tile {
-  position: relative;
-  margin: 0;
-}
-
-.tile:nth-child(1) .tileShot { height: clamp(16rem, 28vw, 24rem); }
-.tile:nth-child(2) .tileShot { height: clamp(13rem, 22vw, 19rem); }
-.tile:nth-child(3) .tileShot { height: clamp(15rem, 25vw, 22rem); }
-
-.tileShot {
-  position: relative;
-  overflow: hidden;
-  border-radius: 1.4rem 1.4rem 2.4rem 1.1rem;
-}
-
-.tile:nth-child(2) .tileShot {
-  border-radius: 2.2rem 1.1rem 1.6rem 1.8rem;
-}
-
-.tile:nth-child(3) .tileShot {
-  border-radius: 1.2rem 2rem 1.5rem 2.2rem;
-}
-
-.tileName {
-  position: absolute;
-  z-index: 2;
-  right: 1rem;
-  bottom: 0.85rem;
-  left: 1rem;
-  margin: 0;
-  color: var(--cream);
-  font-family: var(--font-news), serif;
-  font-size: clamp(1.45rem, 2vw, 1.9rem);
-  font-style: italic;
-  line-height: 1;
-  text-shadow: 0 8px 18px rgba(20, 8, 4, 0.55);
-}
-
-.tileShot::after {
+.photo::after {
   content: "";
   position: absolute;
-  inset: auto 0 0;
-  z-index: 1;
-  height: 42%;
-  background: linear-gradient(to top, rgba(20, 8, 4, 0.5), transparent);
+  inset: 0;
+  background: rgba(20, 12, 8, 0.38);
   pointer-events: none;
 }
 
-.board {
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: clamp(1.35rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4.5rem) clamp(1.6rem, 3vw, 2.2rem);
-  background: var(--wheat);
-  color: var(--rust);
+.photo :global(img) {
+  object-position: center 42%;
 }
 
-.boardLabel {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-news), serif;
-  font-size: 1.35rem;
-  font-style: italic;
-}
-
-.menu {
+.panel {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.65rem;
+  width: 100%;
+  padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  overflow: hidden;
+  background: var(--rust);
 }
 
-.menu li {
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(127, 38, 2, 0.1);
-  font-size: 0.98rem;
+.panel > *:not(.bloom) {
+  position: relative;
+  z-index: 1;
+  max-width: 32rem;
+}
+
+.bloom {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: min(44rem, 96%);
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.92;
+  filter: brightness(1.65) saturate(0.55);
+  transform: translate(16.5%, 16.5%);
+}
+
+.lead {
+  margin: 0;
+  color: rgba(247, 240, 230, 0.92);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 1.05rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.title {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--font-riking), sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+}
+
+.block {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.label {
+  margin: 0;
+  color: var(--wheat);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.place {
+  margin: 0;
+  color: var(--cream);
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 
 .hours {
   display: grid;
-  gap: 1rem;
-  margin: 0;
+  gap: 0.85rem;
+  margin: 0.35rem 0 0;
   padding: 0;
   list-style: none;
 }
 
-.hourLabel {
+.day {
   margin: 0;
+  color: var(--cream);
+  font-size: 0.98rem;
+}
+
+.time {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin: 0.1rem 0 0;
+  color: var(--cream);
+  font-size: 0.98rem;
+}
+
+.time span {
+  color: rgba(247, 240, 230, 0.75);
   font-family: var(--font-news), serif;
-  font-size: 1.15rem;
   font-style: italic;
 }
 
-.hourWhen {
-  margin: 0.15rem 0 0;
-  font-family: var(--font-riking), sans-serif;
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
-  line-height: 1;
-  letter-spacing: 0.02em;
+.visit {
+  align-self: flex-start;
+  margin-top: 0.35rem;
 }
 
-.hourNote {
-  margin: 0.3rem 0 0;
-  font-size: 0.92rem;
-}
-
-@media (max-width: 800px) {
-  .counter {
-    grid-template-columns: 1fr;
+@media (min-width: 860px) {
+  .split {
+    grid-template-columns: 40% 60%;
+    min-height: min(78vh, 40rem);
   }
 
-  .tile:nth-child(1) .tileShot,
-  .tile:nth-child(2) .tileShot,
-  .tile:nth-child(3) .tileShot {
-    height: 16rem;
+  .photo {
+    min-height: 100%;
   }
 
-  .hero {
-    width: min(100%, 22rem);
-  }
-}
-
-@media (min-width: 900px) {
-  .intro {
-    grid-template-columns: minmax(16rem, 1fr) minmax(18rem, 0.9fr);
+  .panel {
+    padding-left: clamp(2rem, 4vw, 4.5rem);
   }
 
-  .hero {
-    width: min(100%, 32rem);
-    justify-self: end;
-  }
-
-  .board {
-    grid-template-columns: minmax(14rem, 22rem) 1fr;
-    align-items: center;
-  }
-
-  .hours {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+  .panel > * {
+    max-width: none;
   }
 }
