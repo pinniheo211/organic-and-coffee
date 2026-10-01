@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --rust: #7f2602;
+  --wheat: #d1ad7c;
+  --ink: #333333;
+  --navy: #142134;
+  --mist: #e6e3de;
+  --sand: #ebe5de;
+  --cream: #f7f0e6;
+  --paper: #ffffff;
+  --well: #f4efe8;
+  --background: var(--sand);
+  --foreground: var(--ink);
+  --linen-rust: url("/assets/button-bg-red.jpg");
+  --font-jost: var(--font-ui);
+  --font-special: var(--font-news);
+  --font-garamond: var(--font-news);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-rust: var(--rust);
+  --color-wheat: var(--wheat);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-mist: var(--mist);
+  --color-sand: var(--sand);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-ui);
+  --font-display: var(--font-riking);
+  --font-serif: var(--font-news);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+::selection {
+  background: var(--wheat);
+  color: var(--rust);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.65rem 1.35rem;
+  border: 0;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btn-rust {
+  background: var(--rust) var(--linen-rust) center / cover;
+  color: var(--cream);
+  font-family: var(--font-ui), sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.btn-wheat {
+  background: var(--wheat);
+  color: var(--rust);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.photo-slot {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.photo-slot-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  text-align: center;
+  color: var(--rust);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.photo-slot-well {
+  background: transparent;
+}
+
+.photo-slot-dashed {
+  background: rgba(209, 173, 124, 0.22);
+}
+
+.photo-slot-frame {
+  background:
+    linear-gradient(160deg, rgba(209, 173, 124, 0.28), rgba(127, 38, 2, 0.06));
+  box-shadow: inset 0 0 0 1px rgba(127, 38, 2, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}

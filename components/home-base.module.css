@@ -1,0 +1,374 @@
+.shell {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.kicker {
+  margin: 0 0 0.6rem;
+  color: var(--rust);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.title {
+  margin: 0;
+  color: var(--rust);
+  font-family: var(--font-riking), sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  /* text-transform: uppercase; */
+}
+
+.body,
+.aboutLead {
+  max-width: 48ch;
+  margin: 1.15rem 0 0;
+  color: var(--ink);
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.aside {
+  max-width: 48ch;
+  margin: 1.15rem 0 1.6rem;
+  color: var(--rust);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.split {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.market {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.marketStage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(88vh, 52rem);
+}
+
+.marketFrame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #c4b4a4;
+}
+
+.marketPhoto {
+  position: absolute;
+  top: -8%;
+  left: 0;
+  width: 100%;
+  height: 116%;
+}
+
+.marketZoom {
+  position: absolute;
+  inset: 0;
+}
+
+.marketPhoto :global(img) {
+  object-position: center 36%;
+}
+
+.marketCopy {
+  position: relative;
+  z-index: 2;
+  width: min(32rem, calc(100% - 8vw));
+  margin: 0 4vw clamp(1.15rem, 4vw, 2.6rem);
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+  background: var(--rust);
+  box-shadow: 0 22px 48px rgba(20, 12, 8, 0.22);
+}
+
+.marketCopy .kicker,
+.marketCopy .aside {
+  color: var(--wheat);
+}
+
+.marketCopy .title {
+  color: var(--cream);
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+}
+
+.marketCopy .body {
+  color: rgba(247, 240, 230, 0.9);
+}
+
+.about,
+.story,
+.find {
+  position: relative;
+  background: var(--sand);
+  padding: clamp(3.5rem, 7vw, 6.5rem) 4vw;
+}
+
+.frame,
+.cutout {
+  position: relative;
+}
+
+.frame {
+  overflow: hidden;
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e7dbcc;
+  box-shadow: 0 28px 64px rgba(20, 33, 52, 0.12);
+}
+
+.cutout {
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+}
+
+.photo,
+.cutoutInner {
+  position: absolute;
+  inset: 0;
+}
+
+.photo {
+  top: -6%;
+  height: 112%;
+}
+
+/* -------------------------------------------------------------- marquee ---- */
+
+.band {
+  position: relative;
+  z-index: 2;
+}
+
+.marquee {
+  overflow: hidden;
+  background: var(--rust);
+  padding: 1.2rem 0;
+}
+
+.track {
+  overflow: hidden;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  padding-right: 2.5rem;
+  color: var(--cream);
+  font-family: var(--font-riking), sans-serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.word::after {
+  margin-left: 2.5rem;
+  color: var(--wheat);
+  content: "·";
+  font-size: 0.85em;
+}
+
+/* ----------------------------------------------------------------- find ---- */
+
+.findGrid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.25rem);
+  align-items: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.address {
+  margin: 0.35rem 0 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.panelLink {
+  color: var(--rust);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(127, 38, 2, 0.35);
+}
+
+.panelLink:hover {
+  border-bottom-color: var(--rust);
+}
+
+.panelActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.35rem;
+  margin-top: 1.85rem;
+}
+
+.textCta {
+  color: var(--rust);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(127, 38, 2, 0.35);
+}
+
+.textCta:hover {
+  border-bottom-color: var(--rust);
+}
+
+.hours {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  border-top: 1px solid rgba(127, 38, 2, 0.16);
+  padding-top: 0.85rem;
+}
+
+.slotLabel {
+  margin: 0 0 0.5rem;
+  color: var(--rust);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.25rem;
+}
+
+.slotRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.16rem 0;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.slotRow span:first-child {
+  color: rgba(51, 51, 51, 0.7);
+}
+
+/* --------------------------------------------------------------- footer ---- */
+
+.footer {
+  position: relative;
+  background: var(--rust);
+  padding: clamp(2.5rem, 5vw, 4rem) 4vw clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--cream);
+}
+
+.footerGrid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.footerLogo {
+  width: min(22rem, 70vw);
+  height: auto;
+}
+
+.footerTag {
+  margin: 1.1rem 0 0;
+  max-width: 34ch;
+  color: rgba(247, 240, 230, 0.78);
+}
+
+.footerHead {
+  margin: 0 0 0.85rem;
+  color: var(--wheat);
+  font-family: var(--font-news), serif;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.footerList {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerLink {
+  color: var(--cream);
+  font-size: 0.98rem;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--wheat);
+}
+
+.footerBase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid rgba(247, 240, 230, 0.2);
+  padding-top: 1.25rem;
+  color: rgba(247, 240, 230, 0.7);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 899px) {
+  .marketStage {
+    display: block;
+    min-height: 0;
+  }
+
+  .marketFrame {
+    position: relative;
+    height: min(72vw, 24rem);
+  }
+
+  .marketCopy {
+    width: auto;
+    margin: -2.5rem 4vw 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .split {
+    grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 1fr);
+  }
+
+  .marketStage {
+    min-height: min(82vh, 46rem);
+  }
+
+  .marketCopy {
+    margin-left: clamp(2.5rem, 6vw, 5.5rem);
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .flip :first-child {
+    order: 2;
+  }
+
+  .findGrid {
+    grid-template-columns: minmax(16rem, 0.9fr) minmax(18rem, 1.1fr);
+  }
+
+  .footerGrid {
+    grid-template-columns: 1.4fr 0.8fr 1fr;
+  }
+}

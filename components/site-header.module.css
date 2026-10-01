@@ -1,0 +1,344 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--rust);
+  box-shadow: 0 10px 24px rgba(20, 12, 8, 0.22);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 1440px;
+  height: 4.25rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3.5rem);
+}
+
+.brand {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 1.7rem;
+  max-width: 100%;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+  margin-left: auto;
+}
+
+.burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid rgba(247, 240, 230, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.burgerLines,
+.burgerLines::before,
+.burgerLines::after {
+  display: block;
+  width: 1.05rem;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.burgerLines {
+  position: relative;
+}
+
+.burgerLines::before,
+.burgerLines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.burgerLines::before {
+  top: -6px;
+}
+
+.burgerLines::after {
+  top: 6px;
+}
+
+.burger[aria-expanded="true"] .burgerLines {
+  background: transparent;
+}
+
+.burger[aria-expanded="true"] .burgerLines::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.burger[aria-expanded="true"] .burgerLines::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.cta {
+  flex: 0 0 auto;
+  min-height: 2.55rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--wheat);
+  color: var(--rust);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background-color 160ms ease;
+}
+
+.cta:hover {
+  background: var(--cream);
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(20, 12, 8, 0.46);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  cursor: pointer;
+  transition: opacity 280ms ease, visibility 280ms ease;
+}
+
+.scrimOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  width: min(22.5rem, 86vw);
+  height: 100dvh;
+  padding: 1.35rem 1.5rem 1.6rem;
+  background: var(--rust);
+  color: var(--cream);
+  box-shadow: -18px 0 40px rgba(20, 12, 8, 0.28);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 340ms;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+}
+
+.drawerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.drawerLogo {
+  display: block;
+  width: auto;
+  height: 1.7rem;
+  max-width: 12.5rem;
+}
+
+.close {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(247, 240, 230, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.closeLines,
+.closeLines::before,
+.closeLines::after {
+  display: block;
+  width: 1.05rem;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.closeLines {
+  position: relative;
+  background: transparent;
+}
+
+.closeLines::before,
+.closeLines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.closeLines::before {
+  transform: rotate(45deg);
+}
+
+.closeLines::after {
+  transform: rotate(-45deg);
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 2.25rem;
+}
+
+.drawerLink {
+  color: var(--cream);
+  font-family: var(--font-riking), sans-serif;
+  font-size: clamp(2.35rem, 8vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.drawerLink:hover {
+  color: var(--wheat);
+}
+
+.drawerCta {
+  width: 100%;
+  margin-top: 1.75rem;
+  min-height: 3rem;
+  background: var(--wheat);
+  color: var(--rust);
+  font-family: var(--font-ui), sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.drawerCta:hover {
+  background: var(--cream);
+}
+
+.drawerFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: auto 0 0;
+  color: var(--wheat);
+  font-family: var(--font-news), serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.drawerFoot a {
+  color: inherit;
+  font-style: normal;
+  font-family: var(--font-ui), sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.drawerFoot a:hover {
+  color: var(--cream);
+}
+
+.drawer :focus-visible {
+  outline-color: var(--wheat);
+}
+
+.link {
+  color: var(--cream);
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.link:hover {
+  color: var(--wheat);
+}
+
+@media (max-width: 1179px) {
+  .cta {
+    display: none;
+  }
+}
+
+@media (min-width: 760px) {
+  .bar {
+    height: 4.75rem;
+    gap: 1rem;
+  }
+
+  .logo {
+    height: 2.15rem;
+    max-width: 18rem;
+  }
+
+  .cta {
+    min-height: 2.85rem;
+    padding: 0.55rem 1.15rem;
+    font-size: 0.92rem;
+  }
+}
+
+@media (min-width: 1180px) {
+  .logo {
+    height: 2.5rem;
+    max-width: none;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .burger,
+  .scrim,
+  .drawer {
+    display: none;
+  }
+
+  .cta {
+    font-size: 0.98rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .cta,
+  .scrim,
+  .drawer {
+    transition: none;
+  }
+}
